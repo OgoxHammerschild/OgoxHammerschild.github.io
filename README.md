@@ -1,22 +1,17 @@
-# Daniel Bortfeld
-
-## Portfolio | Code Snippets | Unreal Examples
-
-
-# Unreal Examples
-
-
-## Utility
-
-First of all a little "trick" I use to highlight whether a paremeter is an *in*- or *out*-parameter and improve code readabilty.
-*In*-parameter means that the variable used as a parameter will not be changed by the function.
-*Out*-parameter means that the variable is used as a return value by the function and thus will be changed.
-
-That's how:
-
+# Daniel Bortfeld  
+## Portfolio | Code Snippets | Unreal Examples  
+***  
+# Unreal Examples  
+***  
+## Utility  
+First of all a little "trick" I use to highlight whether a paremeter is an *in*- or *out*-parameter and improve code readabilty.  
+*In*-parameter means that the variable used as a parameter will not be changed by the function.  
+*Out*-parameter means that the variable is used as a return value by the function and thus will be changed.  
+***
+That's how:  
+***
 ```c++
 // InOut.h
-
 #ifndef INOUT_H
 #define INOUT_H
 
@@ -28,7 +23,6 @@ That's how:
 
 ```c++
 // other.h
-
 #include "InOut.h"
 
 //...
@@ -48,6 +42,7 @@ By using the & operator on a parameter, the content of the variable will not be 
 Thats why this will be the content of my *out* keyword.
 
 Using the const keyword on a parameter will ensure that the variable can not be changed inside the function.
+
 
 ## UFUNCTION Specifiers
 

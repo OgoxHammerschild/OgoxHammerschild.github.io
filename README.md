@@ -4,9 +4,10 @@
 # Unreal Example
 ## UFUNCTION Specifiers #
 
-# BlueprintPure
+### BlueprintPure #
 
 Expose a single or multiple values from C++ to Blueprints
+
 ```c++
 // .h
 
@@ -27,6 +28,7 @@ UFUNCTION(BlueprintPure, Category = "Data")
 ```
 
 Use UPARAM and the DisplayName specifier in case you have shortcuts or unclear names for your parameters
+
 ```c++
 // .h
 

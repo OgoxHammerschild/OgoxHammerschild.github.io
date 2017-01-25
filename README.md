@@ -161,34 +161,34 @@ class AMyClass : public AActor
   public:
   
   // the meta specifier ExpandEnumAsExecs lets the execution pins show up in the Blueprint Editor
-  	UFUNCTION(BlueprintCallable, Category = FlowControl, meta = (Keyword = "if", ExpandEnumAsExecs="Branch"))
+  UFUNCTION(BlueprintCallable, Category = FlowControl, meta = (Keyword = "if", ExpandEnumAsExecs="Branch"))
 		  void MyOwnBranch(bool in condition, EBranch out Branch);
     
-    UFUNCTION(BlueprintCallable, Category = Inventory, meta = (Keyword = "has", ExpandEnumAsExecs="Branch"))
+  UFUNCTION(BlueprintCallable, Category = Inventory, meta = (Keyword = "has", ExpandEnumAsExecs="Branch"))
 		  bool DoesPlayerHaveItem(AItem* item, EHas out Has);
 ```
 
 ```c++
-  // .cpp
+    // .cpp
   
-  // to switch the branch, set the enum as the out-parameter's value
-  void AMyClass::MyOwnBranch(bool in condition, EBranch out Branch)
-   {
-    condition ? Branch = EBranch::IsTrue : Branch = EBranch::IsFalse;
-   }
+    // to switch the branch, set the enum as the out-parameter's value
+    void AMyClass::MyOwnBranch(bool in condition, EBranch out Branch)
+    {
+        condition ? Branch = EBranch::IsTrue : Branch = EBranch::IsFalse;
+    }
    
-   bool AMyClass::DoesPlayerHaveItem(AItem* item, EHas out Has)
-   {
-     for (auto& slot : Inventory)
-     {
-      if(slot == item)
-      {
-        Has = EHas::Has;
-        return true;
-      }
-     }
-     Has = EHas::HasNot;
-     return false;
-   }
+    bool AMyClass::DoesPlayerHaveItem(AItem* item, EHas out Has)
+    {
+        for (auto& slot : Inventory)
+        {
+            if(slot == item)
+            {
+                Has = EHas::Has;
+                return true;
+            }
+        }
+        Has = EHas::HasNot;
+        return false;
+    }
 }
 ```

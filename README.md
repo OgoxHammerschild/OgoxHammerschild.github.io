@@ -1,10 +1,12 @@
 # Daniel Bortfeld
-## Portfolio | Code Snippets | Unreal Examples #
+
+## Portfolio | Code Snippets | Unreal Examples
 
 # Unreal Example
-## UFUNCTION Specifiers #
 
-### BlueprintPure #
+## UFUNCTION Specifiers
+
+### BlueprintPure
 
 Expose a single or multiple values from C++ to Blueprints
 
@@ -27,7 +29,7 @@ UFUNCTION(BlueprintPure, Category = "Data")
   void GetData(float& range, FString& name, int32& level);
 ```
 
-Use UPARAM and the DisplayName specifier in case you have shortcuts or unclear names for your parameters
+Use *UPARAM* and the DisplayName specifier in case you have shortcuts or unclear names for your parameters
 
 ```c++
 // .h

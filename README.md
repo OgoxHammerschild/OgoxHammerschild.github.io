@@ -5,9 +5,9 @@
 
 ## Content
 
+[Utility](#Utility "Utility2")
 
-
-## Utility  
+## Utility<a name="Utility"/>  
 First of all a little "trick" I use to highlight whether a paremeter is an *in*- or *out*-parameter and to improve code readabilty.  
 By *in*-parameter I mean that the variable used as a parameter will not be changed by the function.  
 By *out*-parameter I mean that the variable is used as a return value by the function and thus will be changed.  

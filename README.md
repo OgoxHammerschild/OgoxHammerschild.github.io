@@ -7,10 +7,14 @@
 
 [Utility](#Utility)  
 [Unreal Examples](#Unreal_Examples)  
-[UFUNCTION Specifiers](#UFUNCTION_Specifiers)  
+	[UFUNCTION Specifiers](#UFUNCTION_Specifiers)  
+		[BlueprintPure](#BlueprintPure)   
+		[UPARAM](#UPARAM)   
+		[BlueprintNativeEvent_vs_BlueprintImplementableEvent](#BlueprintNativeEvent_vs_BlueprintImplementableEvent)   
+		[Multiple_execution_pins](#Multiple_execution_pins)   
 
 <a name="Utility"/>  
-
+   
 ## Utility  
 First of all a little "trick" I use to highlight whether a paremeter is an *in*- or *out*-parameter and to improve code readabilty.  
 By *in*-parameter I mean that the variable used as a parameter will not be changed by the function.  
@@ -53,6 +57,8 @@ void GetDataByName(const std::string& name, int& level, float& range);
 
 ## UFUNCTION Specifiers  
 
+<a name="BlueprintPure"/>  
+
 ### BlueprintPure
 
 Expose a single or multiple values from C++ to Blueprints
@@ -79,6 +85,8 @@ UFUNCTION(BlueprintPure, Category = "Data")
 
 // TODO: picture
 
+<a name="UPARAM"/>  
+
 Use **UPARAM** and the DisplayName specifier in case you have shortcuts or unclear names for your parameters
 
 ```c++
@@ -93,6 +101,8 @@ UFUNCTION(BlueprintPure, Category = "Data")
 ```
 
 // TODO: picture
+
+<a name="BlueprintNativeEvent_vs_BlueprintImplementableEvent"/>  
 
 ### BlueprintNativeEvent vs BlueprintImplementableEvent
 
@@ -126,7 +136,9 @@ UFUNCTION(BlueprintNativeEvent, Category = "Event", meta = (DisplayName = "OnSho
 
 // TODO: picture
 
-### Expose multiple execution pins
+<a name="Multiple_execution_pins"/>  
+
+### Multiple execution pins
 
 The execution pins you see on a Branch node or a dynamic cast are based on enums. You can create your own functions with multiple execution pins on the output side
 
@@ -162,10 +174,10 @@ class AMyClass : public AActor
   
   // the meta specifier ExpandEnumAsExecs lets the execution pins show up in the Blueprint Editor
   UFUNCTION(BlueprintCallable, Category = FlowControl, meta = (Keyword = "if", ExpandEnumAsExecs="Branch"))
-		  void MyOwnBranch(bool in condition, EBranch out Branch);
+  	void MyOwnBranch(bool in condition, EBranch out Branch);
     
-  UFUNCTION(BlueprintCallable, Category = Inventory, meta = (Keyword = "has", ExpandEnumAsExecs="Branch"))
-		  bool DoesPlayerHaveItem(AItem* item, EHas out Has);
+  UFUNCTION(BlueprintCallable, Category = Inventory, meta = (Keyword = "has", ExpandEnumAsExecs="Has"))
+  	bool DoesPlayerHaveItem(AItem* item, EHasItem out Has);
 }
 ```
 
@@ -178,17 +190,19 @@ void AMyClass::MyOwnBranch(bool in condition, EBranch out Branch)
     condition ? Branch = EBranch::IsTrue : Branch = EBranch::IsFalse;
 }
    
-bool AMyClass::DoesPlayerHaveItem(AItem* item, EHas out Has)
+bool AMyClass::DoesPlayerHaveItem(AItem* item, EHasItem out Has)
 {
     for (auto& slot : Inventory)
     {
         if(slot == item)
         {
-            Has = EHas::Has;
+            Has = EHasItem::Has;
             return true;
         }
     }
-    Has = EHas::HasNot;
+    Has = EHasItem::HasNot;
     return false;
 }
 ```
+
+// TODO: picture

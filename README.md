@@ -166,7 +166,9 @@ class AMyClass : public AActor
     
     UFUNCTION(BlueprintCallable, Category = Inventory, meta = (Keyword = "has", ExpandEnumAsExecs="Branch"))
 		  bool DoesPlayerHaveItem(AItem* item, EHas out Has);
+```
 
+```c++
   // .cpp
   
   // to switch the branch, set the enum as the out-parameter's value

@@ -1,15 +1,19 @@
 # Daniel Bortfeld  
+
 ## Portfolio | Code Snippets | Unreal Examples  
 ***  
+
 # Unreal Examples  
 ***  
+
 ## Utility  
 First of all a little "trick" I use to highlight whether a paremeter is an *in*- or *out*-parameter and improve code readabilty.  
 *In*-parameter means that the variable used as a parameter will not be changed by the function.  
 *Out*-parameter means that the variable is used as a return value by the function and thus will be changed.  
-***
+***  
+
 That's how:  
-***
+***  
 ```c++
 // InOut.h
 #ifndef INOUT_H

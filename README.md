@@ -10,8 +10,8 @@
 	* [UFUNCTION Specifiers](#UFUNCTION_Specifiers)  
 		* [BlueprintPure](#BlueprintPure)   
 		* [UPARAM](#UPARAM)   
-		* [BlueprintNativeEvent_vs_BlueprintImplementableEvent](#BlueprintNativeEvent_vs_BlueprintImplementableEvent)   
-		* [Multiple_execution_pins](#Multiple_execution_pins)   
+		* [BlueprintNativeEvent vs BlueprintImplementableEvent](#BlueprintNativeEvent_vs_BlueprintImplementableEvent)   
+		* [Multiple execution pins](#Multiple_execution_pins)   
 
 <a name="Utility"/>  
    

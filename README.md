@@ -10,6 +10,7 @@
 [UFUNCTION Specifiers](#UFUNCTION_Specifiers)  
 
 <a name="Utility"/>  
+
 ## Utility  
 First of all a little "trick" I use to highlight whether a paremeter is an *in*- or *out*-parameter and to improve code readabilty.  
 By *in*-parameter I mean that the variable used as a parameter will not be changed by the function.  
@@ -44,10 +45,12 @@ void GetDataByName(const std::string& name, int& level, float& range);
 ```
 
 <a name="Unreal_Examples"/>  
+
 # Unreal Examples    
 ***  
 
 <a name="UFUNCTION_Specifiers"/>  
+
 ## UFUNCTION Specifiers  
 
 ### BlueprintPure

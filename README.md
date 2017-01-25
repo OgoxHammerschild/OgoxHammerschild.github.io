@@ -5,7 +5,9 @@
 
 ## Content
 
-[Utility](#Utility "Utility2")
+[Utility](#Utility)
+[Unreal Examples](#Unreal_Examples)
+[UFUNCTION Specifiers](#UFUNCTION_Specifiers)
 
 ## Utility<a name="Utility"/>  
 First of all a little "trick" I use to highlight whether a paremeter is an *in*- or *out*-parameter and to improve code readabilty.  
@@ -40,10 +42,10 @@ void GetDataByName(std::string in name, int out level, float out range);
 void GetDataByName(const std::string& name, int& level, float& range);
 ```
 
-# Unreal Examples  
+# Unreal Examples<a name="Unreal_Examples"/>    
 ***  
 
-## UFUNCTION Specifiers
+## UFUNCTION Specifiers<a name="UFUNCTION_Specifiers"/>  
 
 ### BlueprintPure
 

@@ -13,6 +13,7 @@ First of all a little "trick" I use to highlight whether a paremeter is an *in*-
 *Out*-parameter means that the variable is used as a return value by the function and thus will be changed.
 
 That's how:
+
 ```c++
 // InOut.h
 
@@ -24,6 +25,7 @@ That's how:
 
 #endif ! INOUT_H
 ```
+
 ```c++
 // other.h
 

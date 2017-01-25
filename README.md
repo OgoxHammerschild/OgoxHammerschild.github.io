@@ -166,29 +166,29 @@ class AMyClass : public AActor
     
   UFUNCTION(BlueprintCallable, Category = Inventory, meta = (Keyword = "has", ExpandEnumAsExecs="Branch"))
 		  bool DoesPlayerHaveItem(AItem* item, EHas out Has);
+}
 ```
 
 ```c++
-    // .cpp
+// .cpp
   
-    // to switch the branch, set the enum as the out-parameter's value
-    void AMyClass::MyOwnBranch(bool in condition, EBranch out Branch)
-    {
-        condition ? Branch = EBranch::IsTrue : Branch = EBranch::IsFalse;
-    }
+// to switch the branch, set the enum as the out-parameter's value
+void AMyClass::MyOwnBranch(bool in condition, EBranch out Branch)
+{
+    condition ? Branch = EBranch::IsTrue : Branch = EBranch::IsFalse;
+}
    
-    bool AMyClass::DoesPlayerHaveItem(AItem* item, EHas out Has)
+bool AMyClass::DoesPlayerHaveItem(AItem* item, EHas out Has)
+{
+    for (auto& slot : Inventory)
     {
-        for (auto& slot : Inventory)
+        if(slot == item)
         {
-            if(slot == item)
-            {
-                Has = EHas::Has;
-                return true;
-            }
+            Has = EHas::Has;
+            return true;
         }
-        Has = EHas::HasNot;
-        return false;
     }
+    Has = EHas::HasNot;
+    return false;
 }
 ```

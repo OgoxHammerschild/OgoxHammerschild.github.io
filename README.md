@@ -9,7 +9,8 @@
 [Unreal Examples](#Unreal_Examples)  
 [UFUNCTION Specifiers](#UFUNCTION_Specifiers)  
 
-## Utility<a name="Utility"/>  
+<a name="Utility"/>  
+## Utility  
 First of all a little "trick" I use to highlight whether a paremeter is an *in*- or *out*-parameter and to improve code readabilty.  
 By *in*-parameter I mean that the variable used as a parameter will not be changed by the function.  
 By *out*-parameter I mean that the variable is used as a return value by the function and thus will be changed.  
@@ -42,10 +43,12 @@ void GetDataByName(std::string in name, int out level, float out range);
 void GetDataByName(const std::string& name, int& level, float& range);
 ```
 
-# Unreal Examples<a name="Unreal_Examples"/>    
+<a name="Unreal_Examples"/>  
+# Unreal Examples    
 ***  
 
-## UFUNCTION Specifiers<a name="UFUNCTION_Specifiers"/>  
+<a name="UFUNCTION_Specifiers"/>  
+## UFUNCTION Specifiers  
 
 ### BlueprintPure
 

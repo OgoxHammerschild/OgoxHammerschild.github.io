@@ -3,17 +3,14 @@
 ## Portfolio | Code Snippets | Unreal Examples  
 ***  
 
-# Unreal Examples  
-***  
-
 ## Utility  
 First of all a little "trick" I use to highlight whether a paremeter is an *in*- or *out*-parameter and improve code readabilty.  
 *In*-parameter means that the variable used as a parameter will not be changed by the function.  
 *Out*-parameter means that the variable is used as a return value by the function and thus will be changed.  
-***  
+  
 
 That's how:  
-***  
+  
 ```c++
 // InOut.h
 #ifndef INOUT_H
@@ -39,14 +36,8 @@ void GetDataByName(std::string in name, int out level, float out range);
 void GetDataByName(const std::string& name, int& level, float& range);
 ```
 
-That's why:
-
-When you 
-By using the & operator on a parameter, the content of the variable will not be copied into the function but the reference of the variable itself will be used.
-Thats why this will be the content of my *out* keyword.
-
-Using the const keyword on a parameter will ensure that the variable can not be changed inside the function.
-
+# Unreal Examples  
+***  
 
 ## UFUNCTION Specifiers
 

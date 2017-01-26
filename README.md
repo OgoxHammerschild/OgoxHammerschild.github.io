@@ -9,9 +9,9 @@
 
 <a name="Collision_Manager"/>
 
-# Dynamic Delegate (C#)
+# Dynamic Delegate (C++)
 
-Define a dynamic Delegate like the ones in the Unreal framework, but without using the Unreal framework!   
+Define a dynamic Delegate like in the Unreal framework, but without using the Unreal framework! The delegate can be subscribed by a pair of an Object\* and a function to call on the object. Broadcast() will call the functions on the respective objects.
 You will find the useage below and the source code in the [repository](https://github.com/OgoxHammerschild/OgoxHammerschild.github.io/blob/master/Composition/Delegate.h).
 
 ```c++

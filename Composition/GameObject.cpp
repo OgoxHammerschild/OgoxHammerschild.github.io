@@ -3,8 +3,15 @@
 #include "Component.h"
 #include <vector>
 
+#include <iostream>
+
 GameObject::GameObject() : components(Hashtable())
 {
+}
+
+GameObject::GameObject(string name) : components(Hashtable())
+{
+	Name = name;
 }
 
 GameObject::~GameObject()
@@ -38,6 +45,7 @@ void GameObject::RemoveComponent(string const& typeName)
 
 void GameObject::Destroy()
 {
+	std::cout << Name << " was destroyed" << std::endl;
 	delete this;
 }
 

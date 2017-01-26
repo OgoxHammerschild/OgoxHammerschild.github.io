@@ -50,6 +50,8 @@ public:
 
 	void Clear();
 
+	int Size();
+
 	ValueType& operator[](KeyType const& Key);
 
 	auto begin() { return pairs.begin(); }
@@ -167,6 +169,12 @@ template<typename KeyType, typename ValueType>
 inline void TMap<KeyType, ValueType>::Clear()
 {
 	pairs.clear();
+}
+
+template<typename KeyType, typename ValueType>
+inline int TMap<KeyType, ValueType>::Size()
+{
+	return pairs.size();
 }
 
 template<typename KeyType, typename ValueType>

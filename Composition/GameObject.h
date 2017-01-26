@@ -27,6 +27,9 @@ protected:
 public:
 
 	GameObject();
+	
+	GameObject(string name);
+
 	virtual ~GameObject();
 
 	template <typename T>

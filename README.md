@@ -54,11 +54,11 @@ int main()
 
 ### Output
 
-Adding function GameObject::Destroy of GO 1, 2 & 3 to delegate Destroy...   
-Broadcasting delegate Destroy...
-GO 1 was destroyed
-GO 2 was destroyed
-GO 3 was destroyed
+Adding function GameObject::Destroy of GO 1, 2 & 3 to delegate Destroy...    
+Broadcasting delegate Destroy...    
+GO 1 was destroyed    
+GO 2 was destroyed    
+GO 3 was destroyed    
 
 <a name="Collision_Manager"/>
 

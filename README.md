@@ -11,7 +11,7 @@
 
 # Dynamic Delegate (C++)
 
-Define a dynamic Delegate like in the Unreal framework, but without using the Unreal framework! The delegate can be subscribed by a pair of an Object\* and a function to call on the object. Broadcast() will call the functions on the respective objects.
+Define a **dynamic delegate** like in the Unreal framework, but without using the Unreal framework! The delegate can be subscribed by a pair of an Object\* and a function to call on the object. Broadcast() will call the functions on the respective objects.
 You will find the useage below and the source code in the [repository](https://github.com/OgoxHammerschild/OgoxHammerschild.github.io/blob/master/Composition/Delegate.h).
 
 ```c++
@@ -120,5 +120,90 @@ namespace MyGame.Collision
 
 # Simple Component System Example in C++
 
-In a component system you have a container object and component objects which you can put into the container. I call my container object GameObject.   
-The GameObject keeps a list of its components and updates them when itself gets updated. In my case, every component can 
+In a component system you have a container object and component objects which you can put into the container as a child. I call my container object GameObject.   
+The GameObject keeps a list of its components and updates them when itself gets updated. In my case, a GameObject can possess every component only once.
+
+```c++
+// (c) Daniel Bortfeld 2016 - 2017
+#ifndef GAME_OBJECT_H
+#define GAME_OBJECT_H
+
+// ... includes ...
+
+class GameObject : public Object
+{
+public:
+
+	string Name = "Unnamed GameObject";
+
+	string Tag = "None";
+
+protected:
+
+	typedef TMap<string, std::shared_ptr<Component>> Hashtable;
+
+	Hashtable components;
+
+public:
+
+	GameObject();
+	
+	GameObject(string name);
+
+	virtual ~GameObject();
+
+	template <typename T>
+	bool HasComponent();
+
+	template <typename T>
+	std::shared_ptr<Component>& AddComponent();
+
+	template <typename T>
+	void RemoveComponent();
+
+	//...
+
+	template <typename T>
+	std::shared_ptr<Component>& GetComponent();
+
+	virtual void Destroy();
+
+	//...
+};
+
+#endif // !GAME_OBJECT_H
+```   
+
+```c++
+// (c) Daniel Bortfeld 2016 - 2017
+#ifndef COMPONENT_H
+#define COMPONENT_H
+
+class GameObject;
+
+#include "Object.h"
+#include <memory>
+#include <string>
+using std::string;
+
+class Component : public Object
+{
+protected:
+
+	GameObject* gameObject;
+	string typeName;
+
+public:
+
+	Component();
+	virtual	~Component();
+
+	GameObject* GetGameObject() const;
+
+	void SetGameObject(GameObject* gameObject);
+
+	virtual void Destroy();
+};
+
+#endif // !COMPONENT_H
+```

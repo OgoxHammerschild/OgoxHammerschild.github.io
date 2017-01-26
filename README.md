@@ -19,6 +19,8 @@ Further pages:
 + [CollisionManager for the MonoGame-Framework (C#)](https://ogoxhammerschild.github.io/Collision/)
 + [Unreal Examples](https://ogoxhammerschild.github.io/Unreal-Examples/)   
 
+***   
+
 <a name="Dynamic_Delegate"/>
 
 # Dynamic Delegate (C++)
@@ -72,6 +74,7 @@ GO 1 was destroyed
 GO 2 was destroyed    
 GO 3 was destroyed    
 
+***   
 
 <a name="Component_System"/>
 
@@ -148,6 +151,8 @@ public:
 #endif // !GAME_OBJECT_H
 ```   
 
+***   
+
 <a name="Component"/>
 
 ## Component
@@ -193,6 +198,7 @@ public:
 #endif // !COMPONENT_H
 ```
 
+***   
 
 <a name="Test"/>
 

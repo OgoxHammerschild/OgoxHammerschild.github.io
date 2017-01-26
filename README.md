@@ -5,6 +5,9 @@
 
 + [Dynamic Delegate (C++)](#Dynamic_Delegate)
 + [Component System (C++)](#Component_System)
+	+ [GameObject](#GameObject)
+	+ [Component](#Component)
+	+ [Functionality Test](#Test)
 + [CollisionManager for the MonoGame-Framework (C#)](https://ogoxhammerschild.github.io/Collision/)
 + [Unreal Examples](https://ogoxhammerschild.github.io/Unreal-Examples/)   
 
@@ -65,6 +68,8 @@ GO 3 was destroyed
 <a name="Component_System"/>
 
 # Simple Component System Example in C++
+
+<a name="GameObject"/>
 
 ## GameObject
 
@@ -135,6 +140,8 @@ public:
 #endif // !GAME_OBJECT_H
 ```   
 
+<a name="Component"/>
+
 ## Component
 
 The component contains a specific set of logic. The logic of a GameObject is formed from the logic of its components.
@@ -177,3 +184,50 @@ public:
 
 #endif // !COMPONENT_H
 ```
+
+
+<a name="Test"/>
+
+## Functionality Test
+
+This program will test if the functions of the Component System will work.
+
+```c++
+// (c) Daniel Bortfeld 2016 - 2017
+
+// ... inlcudes ...
+
+int main()
+{
+	std::shared_ptr<GameObject> gameObject(new GameObject());
+
+	printf_s("Adding Transform to GameObject ...\n");
+	gameObject->AddComponent<Transform>();
+
+	if (gameObject->HasComponent<Transform>())
+	{
+		printf_s("GameObject has transform\n");
+	}
+
+	printf_s("Removing Transform from GameObject ...\n");
+	gameObject->RemoveComponent<Transform>();
+
+	if (!gameObject->HasComponent<Transform>())
+	{
+		printf_s("GameObject has no transform\n");
+	}
+
+	gameObject->AddComponent<Transform>();
+
+	gameObject.reset();
+
+	return 0;
+}
+```
+
+### Output
+
+Adding Transform to GameObject ...    
+GameObject has transform    
+Removing Transform from GameObject ...    
+GameObject has no transform     

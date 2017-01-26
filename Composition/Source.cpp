@@ -1,4 +1,7 @@
 // (c) Daniel Bortfeld 2016 - 2017
+
+
+#include "Delegate.h"
 #include "GameObject.h"
 #include "Transform.h"
 #include <string>

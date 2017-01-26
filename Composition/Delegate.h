@@ -6,77 +6,159 @@
 #include <vector>
 #include "GameObject.h"
 
-#define DECLARE_DELEGATE_ThreeParams_WithReturnValue(DelegateName, ReturnValue, ParamType1, ParamName1, ParamType2, ParamName2, ParamType3, ParamName3) \
+#define DECLARE_DELEGATE(DelegateName) 
+#define DECLARE_DELEGATE_OneParams(DelegateName, ParamType1, ParamName1) 
+#define DECLARE_DELEGATE_TwoParams(DelegateName, ParamType1, ParamName1, ParamType2, ParamName2) 
+#define DECLARE_DELEGATE_ThreeParams(DelegateName, ParamType1, ParamName1, ParamType2, ParamName2, ParamType3, ParamName3)
 
+#define IMPLEMENT_FUNCTION_PTR_RESOLVER_ReturnVal(ReturnValueType, /*FunctionParams*/ ...) \
+	template< class ObjectClass> \
+	class TFunctionPtrResolver \
+	{ \
+	public: \
+	 \
+		typedef ReturnValueType(ObjectClass::*FunctionPtr)(__VA_ARGS__); \
+	}; \
 
-class DelegateName
+#define IMPLEMENT_FUNCTION_PTR_RESOLVER(/*FunctionParams*/ ...) IMPLEMENT_FUNCTION_PTR_RESOLVER_ReturnVal(void, __VA_ARGS__)
+
+class FunctionPointer;
+
+//#define DELEGATE_BASE_CLASS(...)
+class DelegateBase
 {
 private:
+	
+	IMPLEMENT_FUNCTION_PTR_RESOLVER(void);
 
-	typedef void(Object::*FunctionPointer)();
+private:
+
+	//typedef TFunctionPtrResolver<Object>::FunctionPtr FunctionPointer;
 	//typedef ReturnValue(*FunctionPointer)(ParamType1 ParamName1, ParamType2 ParamName2, ParamType3 ParamName3); 
-	typedef std::vector<TPair<Object*, FunctionPointer>> SubscriberList;
 
-	SubscriberList subscribers;
+protected:
+
+	typedef std::vector<TPair<FunctionPointer, std::vector<Object*>>> EventMap;
+
+	EventMap eventListener;
 
 public:
 
-	DelegateName()
+	DelegateBase()
 	{
-		subscribers = SubscriberList();
+		eventListener = EventMap();
 	}
 
-	~DelegateName()
+	~DelegateBase()
 	{
-		subscribers.clear();
+		eventListener.clear();
 	}
 
 	void Broadcast()
 	{
-		SubscriberList handler = subscribers;
-		for (int i = 0; i < handler.size(); ++i)
+		EventMap handler = eventListener;
+		for (auto& function : handler)
 		{
-			(handler[i].Key->*handler[i].Value)();
+			for (int i = 0; i < function.Value.size(); ++i)
+			{
+				if (function.Value[i] != nullptr)
+				{
+					(function.Value[i]->*(function.Key))();
+				}
+			}
 		}
 	}
 
 	bool IsBound()
 	{
-		return subscribers.size() > 0;
+		return eventListener.size() > 0;
 	}
 
 	template <typename T>
-	void Add(Object* object, void(T::*pointer)())
+	void Add(T* object, typename TFunctionPtrResolver<T>::FunctionPtr function)
 	{
+		if (object == nullptr || function == nullptr)
+			return;
+
 		Object* Test = (T*)0; // does T derive from Object?
 
-		Object* asdf = (DelegateName*)0;
-
-		subscribers.push_back(TPair<Object*, FunctionPointer>(object, pointer));
+		eventListener.push_back(TPair<T*, TFunctionPtrResolver<T>::FunctionPtr>(object, function));
 	}
 
-	void Remove(Object* object, FunctionPointer pointer)
+	// Remove a function or a specific object from the caller list
+	// @object: the object that calls the function
+	// @function: the function to remove a caller from
+	template <typename T>
+	bool Remove(T* object, TFunctionPtrResolver<T>::FunctionPtr function)
 	{
-		for (auto iter = subscribers.begin(); iter != subscribers.end(); ++iter)
+		if (object != nullptr && function != nullptr)
 		{
-			if (object == iter->Key && pointer == iter->Value)
+			for (auto& event : eventListener)
 			{
-				subscribers.erase(iter);
-				return;
+				if (function == event.Key)
+				{
+					for (auto iter = event.Value.begin(); iter != event.Value.end(); ++iter)
+					{
+						if (object == *iter)
+						{
+							event.Value.erase(iter);
+							return true;
+						}
+					}
+				}
 			}
 		}
+		return false;
 	}
 
-	void RemoveAll(Object* object, FunctionPointer pointer)
+	template <typename T>
+	bool Remove(TFunctionPtrResolver<T>::FunctionPtr function)
 	{
-		for (auto iter = subscribers.begin(); iter != subscribers.end(); ++iter)
+		if (function != nullptr)
 		{
-			if (object == iter->Key && pointer == iter->Value)
+			for (auto iter = eventListener.begin(); iter != eventListener.end(); ++iter)
 			{
-				subscribers.erase(iter);
+				if (function == iter->Key)
+				{
+					eventListener.erase(iter);
+					return true;
+				}
 			}
 		}
+		return false;
 	}
 }; \
+
+class MyClass : public DelegateBase
+{
+private:
+
+	IMPLEMENT_FUNCTION_PTR_RESOLVER(int);
+	typedef TFunctionPtrResolver<Object>::FunctionPtr FunctionPointer;
+
+public:
+
+	void Broadcast()
+	{
+		EventMap handler = eventListener;
+		for (auto& function : handler)
+		{
+			for (int i = 0; i < function.Value.size(); ++i)
+			{
+				if (function.Value[i] != nullptr)
+				{
+					(function.Value[i]->*(function.Key))();
+				}
+			}
+		}
+	}
+
+
+	MyClass();
+	~MyClass();
+
+private:
+
+};
 
 #endif // !DELEGATE

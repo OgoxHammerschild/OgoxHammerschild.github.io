@@ -179,12 +179,7 @@ public:
 #ifndef COMPONENT_H
 #define COMPONENT_H
 
-class GameObject;
-
-#include "Object.h"
-#include <memory>
-#include <string>
-using std::string;
+// ... includes ...
 
 class Component : public Object
 {
@@ -196,6 +191,7 @@ protected:
 public:
 
 	Component();
+	
 	virtual	~Component();
 
 	GameObject* GetGameObject() const;

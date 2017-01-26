@@ -3,11 +3,12 @@
 ## Portfolio | Code Snippets | Unreal Examples  
 ***  
 
-+ [Dynamic Delegate (C++)](#Collision_Manager)
-+ [CollisionManager for the MonoGame-Framework (C#)](#Collision_Manager)
++ [Dynamic Delegate (C++)](#Dynamic_Delegate)
++ [Component System (C++)](#Component_System)
++ [CollisionManager for the MonoGame-Framework (C#)](https://ogoxhammerschild.github.io/Collision/)
 + [Unreal Examples](https://ogoxhammerschild.github.io/Unreal-Examples/)   
 
-<a name="Collision_Manager"/>
+<a name="Dynamic_Delegate"/>
 
 # Dynamic Delegate (C++)
 
@@ -60,16 +61,16 @@ GO 1 was destroyed
 GO 2 was destroyed    
 GO 3 was destroyed    
 
-<a name="Collision_Manager"/>
 
-<a name="Collision_Manager"/>
-
-
+<a name="Component_System"/>
 
 # Simple Component System Example in C++
 
+## GameObject
+
 In a component system you have a container object and component objects which you can put into the container as a child. I call my container object GameObject.   
-The GameObject keeps a list of its components and updates them when itself gets updated. In my case, a GameObject can possess every component only once.
+The GameObject keeps a list of its components and  - in my case - can possess every component only once.   
+It also serves as a base class for derived gameObjects.
 
 ```c++
 // (c) Daniel Bortfeld 2016 - 2017
@@ -89,31 +90,43 @@ public:
 protected:
 
 	typedef TMap<string, std::shared_ptr<Component>> Hashtable;
-
+	
+        // The components of this gameObject
 	Hashtable components;
 
 public:
-
+        // Constructors
 	GameObject();
 	
 	GameObject(string name);
 
-	virtual ~GameObject();
+        virtual ~GameObject();
 
+        // Whether this gameObject possesses the specified component
+        // @T = the type of the component
 	template <typename T>
 	bool HasComponent();
-
+	
+        // Adds a component to this gameObject
+        // @T = the type of the component
+        // returns the newly added component
 	template <typename T>
 	std::shared_ptr<Component>& AddComponent();
 
+        // Removes a component from this gameObject
+        // @T = the type of the component
 	template <typename T>
 	void RemoveComponent();
 
-	//...
+        //...
 
+        // Gets the specified component from this gameObject
+        // if the gameObject contains the component
+        // @T = the type of the component
 	template <typename T>
 	std::shared_ptr<Component>& GetComponent();
 
+        // Deletes this gameObject 
 	virtual void Destroy();
 
 	//...
@@ -121,6 +134,11 @@ public:
 
 #endif // !GAME_OBJECT_H
 ```   
+
+## Component
+
+The component contains a specific set of logic. The logic of a GameObject is formed from the logic of its components.
+As an example, a component can be a Transform, a SpriteRenderer, a Health-Component or 
 
 ```c++
 // (c) Daniel Bortfeld 2016 - 2017
@@ -133,211 +151,29 @@ class Component : public Object
 {
 protected:
 
+        // The gameObject this component is attached to
+        // (the parent)
 	GameObject* gameObject;
+	
+        // The type of this component as a string
 	string typeName;
 
 public:
-
+        // Constructors
 	Component();
 	
 	virtual	~Component();
 
+        // Gets the owning gameObject of this component
 	GameObject* GetGameObject() const;
 
+        // Sets the owning gameObject of this component while initialization
 	void SetGameObject(GameObject* gameObject);
-
+	
+        // Removes the component from the owning gameObject and 
+        // deletes the component
 	virtual void Destroy();
 };
 
 #endif // !COMPONENT_H
-```
-
-
-# Collision Manager for the MonoGame-Framework (C#)
-
-I made a CollisionManager and a BoxCollider2D for my sidescroller in MonoGame. The CollisionManager checks all colliders against each other. The BoxCollider2D keeps the logic for checking whether he collides with a given collider.
-
-```c#
-// Copyright (c) 2016 Daniel Bortfeld
-using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-
-namespace MonoGamePortal3Practise
-{
-    public static class CollisionManager
-    {
-        private static List<BoxCollider> colliders = new List<BoxCollider>();
-        private static List<BoxCollider> removedColliders = new List<BoxCollider>();
-
-        /// <summary>
-        /// Register a collider for collision checks in the Manager.
-        /// </summary>
-        /// <param name="collider">The collider to add.</param>
-        public static void AddCollider(BoxCollider collider)
-        {
-            colliders.Add(collider);
-        }
-
-        /// <summary>
-        /// Remove all registered Colliders from the Manager's collision check  list.
-        /// </summary>
-        public static void Clear()
-        {
-            removedColliders.AddRange(colliders);
-        }
-
-        /// <summary>
-        /// Remove a specific collider from being checked for collisions by the Manager.
-        /// </summary>
-        /// <param name="collider">The collider to remove.</param>
-        public static void RemoveCollider(BoxCollider collider)
-        {
-            removedColliders.Add(collider);
-        }
-
-        /// <summary>
-        /// Update function of the Manager. Call this every frame.
-        /// </summary>
-        /// <param name="gameTime">delta time</param>
-        public static void UpdateColliders(GameTime gameTime)
-        {
-            colliders.ForEach(c => c.UpdatePosition(gameTime));
-            CheckCollisions();
-
-            removedColliders.ForEach(c => colliders.Remove(c));
-            removedColliders.Clear();
-        }
-
-        /// <summary>
-        /// Checks all registered colliders against each other
-        /// </summary>
-        private static void CheckCollisions()
-        {
-            foreach (var colliderA in colliders)
-                foreach (var colliderB in colliders)
-                    if (!colliderA.Equals(colliderB))
-                        if (colliderA.IsActive && colliderB.IsActive)
-                            colliderA.CheckCollision(colliderB);
-        }
-    }
-}
-```
-
-## Box Collider 2D for the MonoGame-Framework (C#)
-
-```c#
-// Copyright (c) 2016 Daniel Bortfeld
-using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
-
-namespace MonoGamePortal3Practise
-{
-    public class BoxCollider
-    {
-        public delegate void CollisionEvent(BoxCollider other);
-        public event CollisionEvent OnCollisionEnter, OnCollisionStay, OnCollisionExit;
-
-        // ...
-
-        // rectangle:
-        public int X;
-        public int Y;
-        public int Width;
-        public int Height;
-
-        /// <summary>
-        /// Current collisions of this collider
-        /// </summary>
-        private List<BoxCollider> collisions = new List<BoxCollider>();
-        
-	// ...
-
-        /// <summary>
-        /// The GameObject the BoxCollider is attached to
-        /// </summary>
-        public GameObject GameObject { get; private set; }
-
-        // Constructor
-        public BoxCollider(GameObject gameObject, int width, int height, bool isTrigger)
-        {
-            GameObject = gameObject;
-            X = (int)GameObject.Position.X;
-            Y = (int)GameObject.Position.Y;
-            Width = width;
-            Height = height;
-            IsTrigger = isTrigger;
-
-            CollisionManager.AddCollider(this);
-        }
-
-        // ...
-
-        /// <summary>
-        /// Checks whether this collider collides with the other collider. Calls respecive collision events.
-        /// </summary>
-        /// <param name="other"></param>
-        public void CheckCollision(BoxCollider other)
-        {
-            if (!isActive || !other.isActive ||
-                Right < other.Left || other.Right < Left || Bottom < other.Top || other.Bottom < Top)
-            {
-                // no collision
-                if (collisions.Contains(other))
-                {
-                    // no more colliding
-                    if (OnCollisionExit != null)
-                        OnCollisionExit(other);
-                    collisions.Remove(other);
-                }
-                return;
-            }
-
-            if (collisions.Contains(other))
-            {
-                // still colliding
-                if (OnCollisionStay != null)
-                    OnCollisionStay(other);
-                return;
-            }
-
-            // new collison
-            collisions.Add(other);
-            if (OnCollisionEnter != null)
-                OnCollisionEnter(other);
-        }
-
-        // ...
-
-        #region Minkowsky sum (Magic)
-
-        /// <summary>
-        /// Whether this collider is colliding with the top of the other
-        /// </summary>
-        /// <param name="other"></param>
-        /// <returns></returns>
-        public bool CollidesWithTopOf(BoxCollider other)
-        {
-            float wy = (Width + other.Width) * (Center.Y - other.Center.Y);
-            float hx = (Height + other.Height) * (Center.X - other.Center.X);
-
-            if (wy <= -hx && wy <= hx)
-                return true;
-            return false;
-        }
-
-        // ... for each side ...
-
-        #endregion Minkowsky sum (Magic)
-
-        /// <summary>
-        /// Remove this collider from the collider manager.
-        /// </summary>
-        public void Remove()
-        {
-            CollisionManager.RemoveCollider(this);
-        }
-    }
-}
 ```

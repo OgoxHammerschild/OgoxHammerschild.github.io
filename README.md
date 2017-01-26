@@ -16,7 +16,7 @@ On this page:
 	
 Further pages:    
 
-+ [CollisionManager for the MonoGame-Framework (C#)](https://ogoxhammerschild.github.io/Collision/)
++ [CollisionManager for the MonoGame-Framework (C#)](https://ogoxhammerschild.github.io/Collision/)    
 + [Unreal Examples](https://ogoxhammerschild.github.io/Unreal-Examples/)   
 
 ***   
@@ -245,3 +245,11 @@ Adding Transform to GameObject ...
 GameObject has transform    
 Removing Transform from GameObject ...    
 GameObject has no transform     
+
+***    
+
+Further examples:
++ [Unreal Examples](https://ogoxhammerschild.github.io/Unreal-Examples/)   
++ [CollisionManager for the MonoGame-Framework (C#)](https://ogoxhammerschild.github.io/Collision/)    
+
+***    

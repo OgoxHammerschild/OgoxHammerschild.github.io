@@ -7,6 +7,7 @@
 # Content
 
 On this page:    
+
 + [Dynamic Delegate (C++)](#Dynamic_Delegate)
 + [Component System (C++)](#Component_System)
 	+ [GameObject](#GameObject)
@@ -14,6 +15,7 @@ On this page:
 	+ [Functionality Test](#Test)
 	
 Further pages:    
+
 + [CollisionManager for the MonoGame-Framework (C#)](https://ogoxhammerschild.github.io/Collision/)
 + [Unreal Examples](https://ogoxhammerschild.github.io/Unreal-Examples/)   
 

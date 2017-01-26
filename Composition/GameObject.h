@@ -21,33 +21,49 @@ public:
 protected:
 
 	typedef TMap<string, std::shared_ptr<Component>> Hashtable;
-
+	
+	// The components of this gameObject
 	Hashtable components;
 
 public:
-
+	// Constructors
 	GameObject();
 	
 	GameObject(string name);
 
 	virtual ~GameObject();
-
+	
+	// Whether this gameObject possesses the specified component
+	// @T = the type of the component
 	template <typename T>
 	bool HasComponent();
-
+	
+	// Adds a component to this gameObject
+	// @T = the type of the component
+	// returns the newly added component
 	template <typename T>
 	std::shared_ptr<Component>& AddComponent();
 
+	// Removes a component from this gameObject
+	// @T = the type of the component
 	template <typename T>
 	void RemoveComponent();
-
+	
+	// Removes a component from this gameObject
+	// @type = typeid(T) where T is the type of the component
 	void RemoveComponent(type_info const& type);
-
+	
+	// Removes a component from this gameObject
+	// @typeName = the type of the component as string
 	void RemoveComponent(string const& typeName);
 
+	// Gets the specified component from this gameObject
+	// if the gameObject contains the component
+	// @T = the type of the component
 	template <typename T>
 	std::shared_ptr<Component>& GetComponent();
 
+	// Deletes this gameObject 
 	virtual void Destroy();
 
 private:

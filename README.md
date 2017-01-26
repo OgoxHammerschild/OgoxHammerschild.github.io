@@ -248,7 +248,8 @@ GameObject has no transform
 
 ***    
 
-Further examples:
+Further examples:   
+
 + [Unreal Examples](https://ogoxhammerschild.github.io/Unreal-Examples/)   
 + [CollisionManager for the MonoGame-Framework (C#)](https://ogoxhammerschild.github.io/Collision/)    
 

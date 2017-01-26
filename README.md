@@ -3,8 +3,8 @@
 ## Portfolio | Code Snippets | Unreal Examples  
 ***  
 
-+ [Dynamic Delegate (C++)](https://ogoxhammerschild.github.io#Collision_Manager)
-+ [CollisionManager for the MonoGame-Framework (C#)](https://ogoxhammerschild.github.io#Collision_Manager)
++ [Dynamic Delegate (C++)](#Collision_Manager)
++ [CollisionManager for the MonoGame-Framework (C#)](#Collision_Manager)
 + [Unreal Examples](https://ogoxhammerschild.github.io/Unreal-Examples/)   
 
 <a name="Collision_Manager"/>

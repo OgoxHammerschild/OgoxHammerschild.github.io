@@ -239,7 +239,7 @@ namespace MonoGamePortal3Practise
         public delegate void CollisionEvent(BoxCollider other);
         public event CollisionEvent OnCollisionEnter, OnCollisionStay, OnCollisionExit;
 
-	//...
+        // ...
 
         // rectangle:
         public int X;
@@ -251,21 +251,8 @@ namespace MonoGamePortal3Practise
         /// Current collisions of this collider
         /// </summary>
         private List<BoxCollider> collisions = new List<BoxCollider>();
-
-        // rect sides
-        public int Top { get { return Y; } }
-        public int Bottom { get { return Y + Height; } }
-        public int Left { get { return X; } }
-        public int Right { get { return X + Width; } }
-
-        /// <summary>
-        /// The center point of the collider rect
-        /// </summary>
-        public Vector2 Center
-        {
-            get { return new Vector2(X, Y) + new Vector2(Width / 2, Height / 2); }
-            set { X = (int)value.X - Width / 2; Y = (int)value.Y - Height / 2; }
-        }
+        
+	// ...
 
         /// <summary>
         /// The GameObject the BoxCollider is attached to
@@ -285,7 +272,7 @@ namespace MonoGamePortal3Practise
             CollisionManager.AddCollider(this);
         }
 
-	// ...
+        // ...
 
         /// <summary>
         /// Checks whether this collider collides with the other collider. Calls respecive collision events.
@@ -340,22 +327,7 @@ namespace MonoGamePortal3Practise
             return false;
         }
 
-        /// <summary>
-        /// Whether this collider is colliding with the bottom of the other
-        /// </summary>
-        /// <param name="other"></param>
-        /// <returns></returns>
-        public bool CollidesWithBottomOf(BoxCollider other)
-        {
-            float wy = (Width + other.Width) * (Center.Y - other.Center.Y);
-            float hx = (Height + other.Height) * (Center.X - other.Center.X);
-
-            if (wy > -hx && wy > hx)
-                return true;
-            return false;
-        }
-
-	// ...
+        // ... for each side ...
 
         #endregion Minkowsky sum (Magic)
 

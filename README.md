@@ -158,7 +158,7 @@ public:
 ## Component
 
 The component contains a specific set of logic. The logic of a GameObject is formed from the logic of its components.
-As an example, a component can be a Transform, a SpriteRenderer, a Health-Component or 
+As an example, a component can be a Transform, a SpriteRenderer, a Health-Component or an AI-Component.
 
 ```c++
 // (c) Daniel Bortfeld 2016 - 2017

@@ -17,7 +17,8 @@ On this page:
 Further pages:    
 
 + [CollisionManager for the MonoGame-Framework (C#)](https://ogoxhammerschild.github.io/Collision/)    
-+ [Unreal Examples](https://ogoxhammerschild.github.io/Unreal-Examples/)   
++ [Unreal Examples (C++)](https://ogoxhammerschild.github.io/Unreal-Examples/)   
++ [Pathfinding in the Console (C++)](https://ogoxhammerschild.github.io/Console-Pathfinding/)    
 
 ***   
 
@@ -250,7 +251,8 @@ GameObject has no transform
 
 Further examples:   
 
-+ [Unreal Examples](https://ogoxhammerschild.github.io/Unreal-Examples/)   
++ [Unreal Examples (C++)](https://ogoxhammerschild.github.io/Unreal-Examples/)   
 + [CollisionManager for the MonoGame-Framework (C#)](https://ogoxhammerschild.github.io/Collision/)    
++ [Pathfinding in the Console (C++)](https://ogoxhammerschild.github.io/Console-Pathfinding/)    
 
 ***    

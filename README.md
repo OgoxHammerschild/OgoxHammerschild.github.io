@@ -39,7 +39,7 @@ void GameObject::Destroy()
 	delete this;
 }
 
-// Main.h
+// Main.cpp
 
 #include "Delegate.h"
 

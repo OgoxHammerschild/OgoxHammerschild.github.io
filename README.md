@@ -251,8 +251,9 @@ GameObject has no transform
 
 Further examples:   
 
-+ [Unreal Examples (C++)](https://ogoxhammerschild.github.io/Unreal-Examples/)   
-+ [CollisionManager for the MonoGame-Framework (C#)](https://ogoxhammerschild.github.io/Collision/)    
-+ [Pathfinding in the Console (C++)](https://ogoxhammerschild.github.io/Console-Pathfinding/)    
+* [Etos Videos](https://ogoxhammerschild.github.io/Etos/)    
+* [Unreal Examples (C++)](https://ogoxhammerschild.github.io/Unreal-Examples/)   
+* [CollisionManager for the MonoGame-Framework (C#)](https://ogoxhammerschild.github.io/Collision/)    
+* [Pathfinding in the Console (C++)](https://ogoxhammerschild.github.io/Console-Pathfinding/)    
 
 ***    

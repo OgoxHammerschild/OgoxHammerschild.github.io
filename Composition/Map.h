@@ -37,38 +37,28 @@ public:
 	~TMap();
 
 	ValueType& Add(KeyType const& key);
-
 	ValueType& Add(KeyType const& key, ValueType const& value);
 
-	bool Contains(KeyType const& key);
-
-	ValueType* Find(KeyType const& key);
-
-	ValueType& FindOrAdd(KeyType const& key);
-
 	void Remove(KeyType const& key);
-
 	void Clear();
 
-	int Size();
+	bool Contains(KeyType const& key) const;
+	int Size() const;
 
+	ValueType* Find(KeyType const& key);
+	ValueType& FindOrAdd(KeyType const& key);
 	ValueType& operator[](KeyType const& Key);
 
 	auto begin() { return pairs.begin(); }
-	
 	auto end() { return pairs.end(); }
-	
 	auto begin() const { return pairs.begin(); }
-	
 	auto end() const { return pairs.end(); }
 
 private:
 
-	int FindId(KeyType const& key);
-
-	TPair<KeyType, ValueType> FindPair(KeyType const& key);
-
-	bool IsValidId(int const& id);
+	int FindId(KeyType const& key) const;
+	TPair<KeyType, ValueType> FindPair(KeyType const& key) const;
+	bool IsValidId(int const& id) const;
 };
 
 template<typename KeyType, typename ValueType>
@@ -115,7 +105,7 @@ inline ValueType& TMap<KeyType, ValueType>::Add(KeyType const& key, ValueType co
 }
 
 template<typename KeyType, typename ValueType>
-inline bool TMap<KeyType, ValueType>::Contains(KeyType const& key)
+inline bool TMap<KeyType, ValueType>::Contains(KeyType const& key) const
 {
 	return IsValidId(FindId(key));
 }
@@ -172,7 +162,7 @@ inline void TMap<KeyType, ValueType>::Clear()
 }
 
 template<typename KeyType, typename ValueType>
-inline int TMap<KeyType, ValueType>::Size()
+inline int TMap<KeyType, ValueType>::Size() const
 {
 	return pairs.size();
 }
@@ -184,7 +174,7 @@ inline ValueType & TMap<KeyType, ValueType>::operator[](KeyType const & Key)
 }
 
 template<typename KeyType, typename ValueType>
-inline int TMap<KeyType, ValueType>::FindId(KeyType const& key)
+inline int TMap<KeyType, ValueType>::FindId(KeyType const& key) const
 {
 	for (int Index = 0; Index < pairs.size(); ++Index)
 	{
@@ -197,7 +187,7 @@ inline int TMap<KeyType, ValueType>::FindId(KeyType const& key)
 }
 
 template<typename KeyType, typename ValueType>
-inline TPair<KeyType, ValueType> TMap<KeyType, ValueType>::FindPair(KeyType const& key)
+inline TPair<KeyType, ValueType> TMap<KeyType, ValueType>::FindPair(KeyType const& key) const
 {
 	int id = FindId(key);
 	if (id != -1)
@@ -209,7 +199,7 @@ inline TPair<KeyType, ValueType> TMap<KeyType, ValueType>::FindPair(KeyType cons
 }
 
 template<typename KeyType, typename ValueType>
-inline bool TMap<KeyType, ValueType>::IsValidId(int const& id)
+inline bool TMap<KeyType, ValueType>::IsValidId(int const& id) const
 {
 	return id != -1;
 }

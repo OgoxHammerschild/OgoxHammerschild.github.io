@@ -1,10 +1,11 @@
 #ifndef DELEGATE_H
 #define DELEGATE_H
 
-#include "Object.h"
+#include "YOURBASECLASS.h"
 #include "Map.h"
 #include <vector>
-#include "GameObject.h"
+
+typedef YOURBASECLASS Object
 
 #define IMPLEMENT_FUNCTION_PTR_RESOLVER_ReturnVal(ReturnValueType, /*FunctionParams*/ ...) \
 template< class ObjectClass> \

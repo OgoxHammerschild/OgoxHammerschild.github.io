@@ -20,7 +20,7 @@ Build a strong economy with complex ware production chains and fulfil the challe
 
 Etos is a student project which I was working on in order to learn how to handle the Unreal Engine 4 and its features.   
 
-[View Etos on GitHub](https://github.com/OgoxHammerschild/Etos)    
+## [View Etos on GitHub](https://github.com/OgoxHammerschild/Etos)    
 
 <iframe width="640" height="360" src="https://www.youtube.com/embed/N4IIhWtp3jI" frameborder="0" gesture="media" allowfullscreen></iframe>   
 

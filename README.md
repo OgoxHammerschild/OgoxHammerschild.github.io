@@ -5,11 +5,20 @@
 ## Portfolio | Code Snippets 
 ***    
 
+Further pages:    
+
++ [Etos Main Page](https://ogoxhammerschild.github.io/Etos/)   
++ [Pathfinding in the Windows Console (C++)](https://ogoxhammerschild.github.io/Console-Pathfinding/)    
++ [CollisionManager for the MonoGame-Framework (C#)](https://ogoxhammerschild.github.io/Collision/)    
++ [Dynamic Delegate (C++)](#Dynamic_Delegate)    
+
 # Etos   
 
 Real-Time-Strategy City-Building Game in the style of the ANNO series
 
 Build a strong economy with complex ware production chains and fulfil the challenging needs of your settlers to become the ultimate mayor.    
+
+Etos is a student project which I was working on in order to learn how to handle the Unreal Engine 4 and its features.   
 
 [View Etos on GitHub](https://github.com/OgoxHammerschild/Etos)    
 

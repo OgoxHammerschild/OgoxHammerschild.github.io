@@ -7,10 +7,10 @@
 
 Further pages:    
 
-+ [Etos Main Page](https://ogoxhammerschild.github.io/Etos/)   
 + [Pathfinding in the Windows Console (C++)](https://ogoxhammerschild.github.io/Console-Pathfinding/)    
 + [CollisionManager for the MonoGame-Framework (C#)](https://ogoxhammerschild.github.io/Collision/)    
 + [Dynamic Delegate (C++)](https://ogoxhammerschild.github.io/DynamicDelegate/)    
++ [Etos Main Page](https://ogoxhammerschild.github.io/Etos/)   
 
 # Etos   
 

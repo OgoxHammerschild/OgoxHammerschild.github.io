@@ -1,1 +1,38 @@
 theme: jekyll-theme-midnight
+
+# http://deanattali.com/beautiful-jekyll/
+
+# url is the full website URL
+# baseurl is the website's URL without the hostname
+url: "http://OgoxHammerschild.github.io"
+baseurl: ""
+
+# Name of website
+title: OgoxHammerschild.github.io
+
+# Short description of your site
+description: A small collection of some of my repositories and code snippets!
+
+# Image to show in the navigation bar - image must be a square (width = height)
+# Remove this parameter if you don't want an image in the navbar
+avatar: "https://avatars3.githubusercontent.com/u/15057773?s=460&v=4"
+
+# If you want to have an image logo in the top-left corner instead of the title text,
+# then specify the following parameter
+# title-img: /path/to/image
+
+
+# Select your active Social Network Links.
+# Uncomment the links you want to show in the footer and add your information to each link.
+# You can reorder the items to define the link order.
+# If you want to add a new link that isn't here, you'll need to also edit the file _data/SocialNetworks.yml
+social-network-links:
+#  rss: true
+  email: "daniel.bortfeld@outlook.de"
+  github: OgoxHammerschild
+  linkedin: daniel-bortfeld
+
+# Select which share links to show in posts
+share-links-active:
+  twitter: true
+  linkedin: true

@@ -1,6 +1,5 @@
 ---
-title: Daniel Bortfeld - Portfolio | Code Snippets
-description: A small collection of repositories and code snippets!
+title: A small collection of repositories and code snippets!
 ---
 
 <a name="Etos_Video"/>   

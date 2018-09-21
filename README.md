@@ -1,7 +1,3 @@
----
-title: A small collection of repositories and code snippets!
----
-
 <a name="Etos_Video"/>   
 
 ***    

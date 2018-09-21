@@ -1,6 +1,3 @@
----
----
-
 # Daniel Bortfeld  
 
 <a name="Etos_Video"/>   
